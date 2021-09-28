@@ -1,10 +1,12 @@
 import React from "react";
 import ListPage from "./components/ListPage.js";
 import DetailsPage from "./components/DetailsPage.js";
+import './App.css'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
+  NavLink,
 } from "react-router-dom";
 
 // Params are placeholders in the URL that begin
@@ -13,12 +15,17 @@ import {
 // is used for matching dynamic segments in other
 // popular web frameworks like Rails and Express.
 
-export default class ParamsExample extends Component {
+export default class ParamsExample extends React.Component {
   render() {
     return (
       <Router>
         <div>
-          <h2>Header</h2>
+          <NavLink 
+          activeClassName='active-link' 
+          exact 
+          to="/">
+            ListPage
+          </NavLink>
           <Switch>
             <Route 
               path="/" 
@@ -26,7 +33,7 @@ export default class ParamsExample extends Component {
               render={(routerProps) => <ListPage {...routerProps} />} 
             />          
             <Route 
-              path="/:id" 
+              path="/teas/:id" 
               exact
               render={(routerProps) => <DetailsPage {...routerProps} />} 
             />          

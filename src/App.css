@@ -5,6 +5,7 @@ li{
   display: flex;
   justify-content: center;
   flex-direction: column;
+  align-items: center;
 }
 
 body{
@@ -12,4 +13,21 @@ body{
   justify-content: center;
 }
 
+.active-link{
+  background-color: orange;
+}
+
+a{
+  text-decoration: none;
+  color: black
+}
+
+li img{
+  width: 300px;
+}
+
+li:hover{
+  transform: translateY(-10px);
+  box-shadow: 0 5px 5px grey;
+}
 

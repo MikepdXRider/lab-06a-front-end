@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 import request from 'superagent'
 
 export default class ListPage extends Component {
@@ -24,13 +25,15 @@ export default class ListPage extends Component {
                     {
                         this.state.data.map(dataObj => {
                         return(
-                            <li>
-                                <h3>{dataObj.tea}</h3>
-                                <img src={dataObj.url} alt='tea'/>
-                                <p>Type: {dataObj.type}</p>
-                                <p>Description: {dataObj.description}</p>
-                                <p>Native to North America: {dataObj.north_america_native.toString()}</p>
-                            </li>
+                            <Link to={`/teas/${dataObj.id}`}>
+                                <li>
+                                    <h3>{dataObj.tea}</h3>
+                                    <img src={dataObj.url} alt='tea'/>
+                                    <p>Type: {dataObj.type}</p>
+                                    <p>Description: {dataObj.description}</p>
+                                    <p>Native to North America: {dataObj.north_america_native.toString()}</p>
+                                </li>
+                            </Link>
                         )
                         })
                     }
