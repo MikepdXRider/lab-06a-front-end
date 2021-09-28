@@ -26,7 +26,7 @@ export default class ListPage extends Component {
                         this.state.data.map(dataObj => {
                         return(
                             <Link to={`/teas/${dataObj.id}`}>
-                                <li>
+                                <li key={dataObj.id}>
                                     <h3>{dataObj.tea}</h3>
                                     <img src={dataObj.url} alt='tea'/>
                                     <p>Type: {dataObj.type}</p>
