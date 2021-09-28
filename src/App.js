@@ -1,5 +1,6 @@
 import React from "react";
 import ListPage from "./components/ListPage.js";
+import DetailsPage from "./components/DetailsPage.js";
 import {
   BrowserRouter as Router,
   Switch,
