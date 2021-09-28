@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import ListPage from "./components/ListPage.js";
+import DetailsPage from "./components/DetailsPage.js";
+import './App.css'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  NavLink,
+} from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// Params are placeholders in the URL that begin
+// with a colon, like the `:id` param defined in
+// the route in this example. A similar convention
+// is used for matching dynamic segments in other
+// popular web frameworks like Rails and Express.
+
+export default class ParamsExample extends React.Component {
+  render() {
+    return (
+      <Router>
+        <div>
+          <NavLink 
+          activeClassName='active-link' 
+          exact 
+          to="/">
+            ListPage
+          </NavLink>
+          <Switch>
+            <Route 
+              path="/" 
+              exact
+              render={(routerProps) => <ListPage {...routerProps} />} 
+            />          
+            <Route 
+              path="/teas/:id" 
+              exact
+              render={(routerProps) => <DetailsPage {...routerProps} />} 
+            />          
+          </Switch>
+        </div>
+      </Router>
+    );
+  }
 }
-
-export default App;
