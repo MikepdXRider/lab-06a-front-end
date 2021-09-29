@@ -11,7 +11,7 @@ export default class DetailsPage extends Component {
     }
 
     fetchData = async () => {
-        const response = await request.get(`https://tea-dummy-get.herokuapp.com/teas/${this.props.match.params.id}`)
+        const response = await request.get(`https://lab06b-be.herokuapp.com/teas/${this.props.match.params.id}`)
         console.log(response.body)
         this.setState({data: response.body})
     }
