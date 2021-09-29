@@ -12,9 +12,9 @@ export default class ListPage extends Component {
     }
     
     fetchData = async () => {
-        const response = await request.get(`https://tea-dummy-get.herokuapp.com/teas`)
+        const response = await request.get(`https://lab06b-be.herokuapp.com/teas`)
 
-        console.log(response.body)
+        console.log(response)
         this.setState({data: response.body})
     }
 
