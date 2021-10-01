@@ -1,6 +1,7 @@
 import React from "react";
 import ListPage from "./components/ListPage.js";
 import DetailsPage from "./components/DetailsPage.js";
+import AdminPage from './components/AdminPage.js'
 import './App.css'
 import {
   BrowserRouter as Router,
@@ -26,6 +27,12 @@ export default class ParamsExample extends React.Component {
           to="/">
             ListPage
           </NavLink>
+          <NavLink 
+          activeClassName='active-link' 
+          exact 
+          to="/admin">
+            Admin
+          </NavLink>
           <Switch>
             <Route 
               path="/" 
@@ -36,6 +43,11 @@ export default class ParamsExample extends React.Component {
               path="/teas/:id" 
               exact
               render={(routerProps) => <DetailsPage {...routerProps} />} 
+            />          
+            <Route 
+              path="/admin" 
+              exact
+              render={(routerProps) => <AdminPage {...routerProps} />} 
             />          
           </Switch>
         </div>

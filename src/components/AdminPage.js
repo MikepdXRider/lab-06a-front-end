@@ -9,28 +9,27 @@ export default class AdminPage extends Component {
         url: '',
     }
 
-    handleNameChange = () => {
-        // update state to reflect e.target.value
+    handleNameChange = async (e) => {
+        await this.setState({tea_name: e.target.value})
     }
 
-    handleTypeChange = () => {
-        // update state to reflect e.target.value
+    handleTypeChange = async (e) => {
+        await this.setState({type: e.target.value})
     }
 
-    handleDescriptionChange = () => {
-        // update state to reflect e.target.value
+    handleDescriptionChange = async (e) => {
+        await this.setState({description: e.target.value})
     }
 
-    handleIsAmericanChange = () => {
-        // update state to reflect e.target.value
+    handleIsAmericanChange = async (e) => {
+        await this.setState({isAmerican: e.target.value})
     }
 
-    handleUrlChange = () => {
-        // update state to reflect e.target.value
+    handleUrlChange = async (e) => {
+        await this.setState({url: e.target.value})
     }
 
     handleFormSubmit =  async () => {
-        // prevent default
         // If a state value is empty, throw an alert.
         // makes a post request with state values.
         // redirects user to listPage.
@@ -40,20 +39,26 @@ export default class AdminPage extends Component {
         return (
             <form onSubmit={this.handleFormSubmit}>
                 <label>
-                    <input onChange={this.handleNameChange} type="text" name="tea_name" />
+                    Name 
+                    <input onChange={this.handleNameChange} type="text" name="tea_name" required />
                 </label>
                 <label>
-                    <input onChange={this.handleTypeChange} type="text" name="type" />
+                    Type   
+                    <input onChange={this.handleTypeChange} type="text" name="type" required/>
                 </label>
                 <label>
-                    <input onChange={this.handleDescriptionChange} type="text" name="description" />
+                    Description   
+                    <input onChange={this.handleDescriptionChange} type="text" name="description" required/>
                 </label>
                 <label>
-                    <input onChange={this.handleIsAmericanChange} type="text" name="north_america_native" />
+                    Is North American Native? True/False   
+                    <input onChange={this.handleIsAmericanChange} type="text" name="north_america_native" required/>
                 </label>
-                <label>s
-                    <input onChange={this.handleUrlChange} type="text" name="URL" />
+                <label>
+                    URL
+                    <input onChange={this.handleUrlChange} type="text" name="URL" required/>
                 </label>
+                <button>Submit</button>
             </form>
         )
     }
