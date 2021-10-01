@@ -65,6 +65,7 @@ export default class DetailsPage extends Component {
         await this.setState({url: e.target.value});
     }
 
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in
     // Couldn't get this version to work
     // prepareState = async (stateObj) => {
     //     for (const property in stateObj) {
@@ -75,6 +76,7 @@ export default class DetailsPage extends Component {
     //         }
     //     }
     // }
+
     prepareState = async (stateObj) => {
         const currentData = this.state.data
         const { tea_name, type, description, north_america_native, url } = this.state
