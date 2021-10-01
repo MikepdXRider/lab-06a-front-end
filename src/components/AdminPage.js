@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router'
+import request from 'superagent'
 
 export default class AdminPage extends Component {
     state = {
@@ -29,10 +31,21 @@ export default class AdminPage extends Component {
         await this.setState({url: e.target.value})
     }
 
-    handleFormSubmit =  async () => {
-        // If a state value is empty, throw an alert.
-        // makes a post request with state values.
-        // redirects user to listPage.
+    handleFormSubmit =  async (e) => {
+        e.preventDefault()
+        try{
+            await request.post('https://lab06b-be.herokuapp.com/teas')
+            .send({
+                tea_name: this.state.tea_name,
+                type: this.state.type,
+                description: this.state.description,
+                north_america_native: this.state.isAmerican,
+                url: this.state.url,
+            })
+        } catch (error) {
+            alert(error)
+        }
+        <Redirect to='/' />
     }
     
     render() {
