@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
-import { Redirect } from 'react-router'
-import request from 'superagent'
+import React, { Component } from 'react';
+import request from 'superagent';
 
 export default class AdminPage extends Component {
     state = {
@@ -11,28 +10,35 @@ export default class AdminPage extends Component {
         url: '',
     }
 
+
     handleNameChange = async (e) => {
-        await this.setState({tea_name: e.target.value})
+        await this.setState({tea_name: e.target.value});
     }
+
 
     handleTypeChange = async (e) => {
-        await this.setState({type: e.target.value})
+        await this.setState({type: e.target.value});
     }
+
 
     handleDescriptionChange = async (e) => {
-        await this.setState({description: e.target.value})
+        await this.setState({description: e.target.value});
     }
+
 
     handleIsAmericanChange = async (e) => {
-        await this.setState({isAmerican: e.target.value})
+        await this.setState({isAmerican: e.target.value});
     }
+
 
     handleUrlChange = async (e) => {
-        await this.setState({url: e.target.value})
+        await this.setState({url: e.target.value});
     }
 
+
     handleFormSubmit =  async (e) => {
-        e.preventDefault()
+        e.preventDefault();
+
         try{
             await request.post('https://lab06b-be.herokuapp.com/teas')
             .send({
@@ -41,11 +47,12 @@ export default class AdminPage extends Component {
                 description: this.state.description,
                 north_america_native: this.state.isAmerican,
                 url: this.state.url,
-            })
+            });
         } catch (error) {
-            alert(error)
+            alert(error);
         }
-        <Redirect to='/' />
+
+        this.props.history.push('/');
     }
     
     render() {

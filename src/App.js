@@ -1,8 +1,8 @@
 import React from "react";
 import ListPage from "./components/ListPage.js";
 import DetailsPage from "./components/DetailsPage.js";
-import AdminPage from './components/AdminPage.js'
-import './App.css'
+import AdminPage from './components/AdminPage.js';
+import './App.css';
 import {
   BrowserRouter as Router,
   Switch,

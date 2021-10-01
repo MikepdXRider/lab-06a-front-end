@@ -1,22 +1,24 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import request from 'superagent'
+import request from 'superagent';
 
 export default class ListPage extends Component {
     state = {
         data: []
     }
     
+
     componentDidMount = async () => {
         await this.fetchData();
     }
     
-    fetchData = async () => {
-        const response = await request.get(`https://lab06b-be.herokuapp.com/teas`)
 
-        console.log(response)
-        this.setState({data: response.body})
+    fetchData = async () => {
+        const response = await request.get(`https://lab06b-be.herokuapp.com/teas`);
+
+        this.setState({data: response.body});
     }
+
 
     render() {
         return (
