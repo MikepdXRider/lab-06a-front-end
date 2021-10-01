@@ -31,3 +31,13 @@ li:hover{
   box-shadow: 0 5px 5px grey;
 }
 
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+label{
+  display: flex;
+  justify-content: flex-end;
+}
