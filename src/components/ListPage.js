@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import request from 'superagent';
+// import request from 'superagent';
+import getTeas from '../fetch-utils.js';
 
 export default class ListPage extends Component {
     state = {
@@ -9,16 +10,14 @@ export default class ListPage extends Component {
     
 
     componentDidMount = async () => {
-         // update to call an imported fetchData function
         await this.fetchData();
     }
     
-    // Move contents into a function in a fetch-utils.js file.
-    // Then delete this.
-    fetchData = async () => {
-        const response = await request.get(`https://lab06b-be.herokuapp.com/teas`);
 
-        this.setState({data: response.body});
+    fetchData = async () => {
+        const allTeaData = getTeas();
+
+        this.setState({data: allTeaData});
     }
 
 
