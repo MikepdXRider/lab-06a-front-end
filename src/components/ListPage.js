@@ -9,7 +9,7 @@ export default class ListPage extends Component {
     
 
     componentDidMount = async () => {
-        // Replace with a function imported from fetch-utils.js
+         // update to call an imported fetchData function
         await this.fetchData();
     }
     
