@@ -9,10 +9,12 @@ export default class ListPage extends Component {
     
 
     componentDidMount = async () => {
+        // Replace with a function imported from fetch-utils.js
         await this.fetchData();
     }
     
-
+    // Move contents into a function in a fetch-utils.js file.
+    // Then delete this.
     fetchData = async () => {
         const response = await request.get(`https://lab06b-be.herokuapp.com/teas`);
 
