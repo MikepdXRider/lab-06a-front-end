@@ -5,6 +5,7 @@ import request from 'superagent';
 export async function getTeas() {
     try{
         const response = await request.get(`https://lab06b-be.herokuapp.com/teas`);
+        console.log(response.body);
         return response.body;
     } catch (error) {
         console.log(error);
@@ -24,7 +25,7 @@ export async function getTeaTypes() {
 // NOT TESTED ❗
 export async function getTeaById(id) {
     try{
-        const response = await request.get(`https://lab06b-be.herokuapp.com/tea-types/$1`, [id]);
+        const response = await request.get(`https://lab06b-be.herokuapp.com/teas/${id}`);
         return response.body;
     } catch (error) {
         console.log(error);
@@ -34,7 +35,7 @@ export async function getTeaById(id) {
 // NOT TESTED ❗
 export async function deleteTeaById(id) {
     try{
-        await request.delete(`https://lab06b-be.herokuapp.com/tea-types/$1`, [id]);
+        await request.delete(`https://lab06b-be.herokuapp.com/teas/${id}`);
     } catch (error) {
         console.log(error);
     }
@@ -53,7 +54,7 @@ export async function createTea(newTeaObj) {
 // NOT TESTED ❗
 export async function updateTeaById(id, teaObj) {
     try{
-        await request.put('https://lab06b-be.herokuapp.com/teas/$1', [id])
+        await request.put(`https://lab06b-be.herokuapp.com/teas/${id}`)
         .send(teaObj);
     } catch (error) {
         console.log(error);

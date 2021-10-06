@@ -1,25 +1,18 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 // import request from 'superagent';
-import getTeas from '../fetch-utils.js';
+import { getTeas } from '../fetch-utils.js';
 
 export default class ListPage extends Component {
     state = {
         data: []
     }
-    
 
     componentDidMount = async () => {
-        await this.fetchData();
-    }
-    
-
-    fetchData = async () => {
-        const allTeaData = getTeas();
+        const allTeaData = await getTeas();
 
         this.setState({data: allTeaData});
     }
-
 
     render() {
         return (
@@ -27,17 +20,17 @@ export default class ListPage extends Component {
                 <ul>
                     {
                         this.state.data.map(dataObj => {
-                        return(
-                            <Link to={`/teas/${dataObj.id}`}>
-                                <li key={dataObj.id}>
-                                    <h3>{dataObj.tea_name}</h3>
-                                    <img src={dataObj.url} alt='tea'/>
-                                    <p>Type: {dataObj.type}</p>
-                                    <p>Description: {dataObj.description}</p>
-                                    <p>Native to North America: {dataObj.north_america_native.toString()}</p>
-                                </li>
-                            </Link>
-                        )
+                            return(
+                                <Link to={`/teas/${dataObj.id}`}>
+                                    <li key={dataObj.id}>
+                                        <h3>{dataObj.tea_name}</h3>
+                                        <img src={dataObj.url} alt='tea'/>
+                                        <p>Type: {dataObj.tea_type}</p>
+                                        <p>Description: {dataObj.description}</p>
+                                        <p>Native to North America: {dataObj.north_america_native.toString()}</p>
+                                    </li>
+                                </Link>
+                            )
                         })
                     }
                 </ul>
