@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import request from 'superagent';
+import { createTea, getTeaTypes } from '../fetch-utils.js';
 
 export default class AdminPage extends Component {
     state = {
         tea_name: '',
-        type: '',
+        type_id: 0,
         description: '',
-        isAmerican: '',
+        north_america_native: '',
         url: '',
     }
 
@@ -27,7 +28,7 @@ export default class AdminPage extends Component {
 
     // Could place this action in the jsx if we want to clean up the class component.
     handleIsAmericanChange = async (e) => {
-        await this.setState({isAmerican: e.target.value});
+        await this.setState({north_america_native: e.target.value});
     }
 
     // Could place this action in the jsx if we want to clean up the class component.
@@ -38,24 +39,13 @@ export default class AdminPage extends Component {
     
     handleFormSubmit =  async (e) => {
         e.preventDefault();
-        // Move this into a fetch-utils file
-        try{
-            await request.post('https://lab06b-be.herokuapp.com/teas')
-            .send({
-                tea_name: this.state.tea_name,
-                type: this.state.type,
-                description: this.state.description,
-                north_america_native: this.state.isAmerican,
-                url: this.state.url,
-            });
-        } catch (error) {
-            alert(error);
-        }
-
+        createTea(this.state);
         this.props.history.push('/');
     }
     
     render() {
+        // ❓ Is this okay? This is an alternative to the componentDidMount approach. 
+        const categoryDataArr = getTeaTypes()
         return (
             <form onSubmit={this.handleFormSubmit}>
                 <label>
@@ -66,7 +56,17 @@ export default class AdminPage extends Component {
                     Needs values set to categories id */}
                 <label>
                     Type   
-                    <input onChange={this.handleTypeChange} type="text" name="type" required/>
+                    <select onChange={this.handleTypeChange}>
+                        {
+                            categoryDataArr.map(catObj => {
+                                return(
+                                    <>
+                                        <option value={catObj.id}>{catObj.tea_type}</option>
+                                    </>
+                                )
+                            })
+                        }
+                    </select>
                 </label>
                 <label>
                     Description   
