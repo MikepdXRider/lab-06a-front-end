@@ -40,7 +40,7 @@ test('createTeas function creates a tea in SQL', async () => {
 
     const expected = {
         "description": "cool tea I discovered with Yosef, Karl and Soraya",
-        "id": 13,
+        "id": 8,
         "north_america_native": true,
         "owner_id": 1,
         "tea_name": "Struggle-tea",
