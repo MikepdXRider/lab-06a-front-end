@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import request from 'superagent';
 import { createTea, getTeaTypes } from '../fetch-utils.js';
 
 export default class AdminPage extends Component {
